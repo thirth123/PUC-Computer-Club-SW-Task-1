@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier University Computer Club SW Member's Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        .modal-container {
+            max-height: calc(100vh - 4em);
+            overflow-y: auto;
+        }
+        body.modal-active {
+            overflow-x: hidden;
+            overflow-y: visible !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    
+    <!-- Navbar Section -->
+    <nav class="bg-blue-800 text-white py-4 px-6 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-laptop-code text-2xl"></i>
+                <span class="text-xl font-bold"> MY_WED </span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="hover:text-blue-300 transition-colors">Home</a>
+                <a href="#" class="hover:text-blue-300 transition-colors">Resources</a>
+                <a href="#" class="hover:text-blue-300 transition-colors">Newsletter</a>
+                <a href="#" class="login-btn hover:text-blue-300 transition-colors cursor-pointer">Login</a>
+            </div>
+            
+            <div class="md:hidden">
+                <button class="text-white focus:outline-none mobile-menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden mt-4 pb-4">
+            <a href="#" class="block py-2 hover:text-blue-300 transition-colors">Home</a>
+            <a href="#" class="block py-2 hover:text-blue-300 transition-colors">Resources</a>
+            <a href="#" class="block py-2 hover:text-blue-300 transition-colors">Newsletter</a>
+            <a href="#" class="login-btn block py-2 hover:text-blue-300 transition-colors cursor-pointer">Login</a>
+        </div>
+    </nav>
+
+    <!-- Login Modal -->
+    <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            
+            <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
+                </svg>
+                <span class="text-sm">(Esc)</span>
+            </div>
+
+            <div class="modal-content py-4 text-left px-6">
+                <!-- Title -->
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold">Login to Your Account</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Body -->
+                <form id="login-form">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="login-email">
+                            Email
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="login-email" type="email" placeholder="Email" required>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="login-password">
+                            Password
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="login-password" type="password" placeholder="Password" required>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <label class="flex items-center text-sm text-gray-700">
+                            <input type="checkbox" class="form-checkbox">
+                            <span class="ml-2">Remember me</span>
+                        </label>
+                        <a href="#" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                            Forgot Password?
+                        </a>
+                    </div>
+                    <div class="mb-4">
+                        <button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+                            Sign In
+                        </button>
+                    </div>
+                </form>
+
+                <p class="text-center text-gray-600 text-sm">
+                    Don't have an account? 
+                    <a href="#" class="text-blue-500 font-bold switch-to-register hover:text-blue-800">Register now</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="register-modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            
+            <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
+                </svg>
+                <span class="text-sm">(Esc)</span>
+            </div>
+
+            <div class="modal-content py-4 text-left px-6">
+                <!-- Title -->
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold">Create an Account</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Body -->
+                <form id="register-form">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="register-name">
+                            Full Name
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="register-name" type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="register-email">
+                            Email
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="register-email" type="email" placeholder="Email" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="register-password">
+                            Password
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="register-password" type="password" placeholder="Password" required>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="register-confirm-password">
+                            Confirm Password
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="register-confirm-password" type="password" placeholder="Confirm Password" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="flex items-center text-sm text-gray-700">
+                            <input type="checkbox" class="form-checkbox" required>
+                            <span class="ml-2">I agree to the <a href="#" class="text-blue-500">Terms and Conditions</a></span>
+                        </label>
+                    </div>
+                    <div class="mb-4">
+                        <button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+                            Create Account
+                        </button>
+                    </div>
+                </form>
+
+                <p class="text-center text-gray-600 text-sm">
+                    Already have an account? 
+                    <a href="#" class="text-blue-500 font-bold switch-to-login hover:text-blue-800">Login here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="hidden fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg">
+        <span id="toast-message">Operation successful!</span>
+    </div>
+
+    <!-- Banner Section -->
+    <section class="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-16 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">You can know me</h2>
+                <p class="text-lg mb-6">From updating work samples to optimizing for mobile devices, Sathirta will provide you with the knowledge and skills you need to stand out in today's competitive job market. Thank You</p>
+                <button class="bg-white text-blue-800 font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-100 transition-colors">
+                    Learn more
+                </button>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="bg-blue-600 p-6 rounded-xl shadow-xl transform rotate-3 w-80 h-80 flex items-center justify-center">
+                    <div class="bg-white text-blue-800 p-4 rounded-lg transform -rotate-3 text-center w-64">
+                        <i class="fas fa-user-graduate text-5xl mb-4"></i>
+                        <h3 class="font-bold text-xl">Student Profile</h3>
+                        <p class="mt-2">Explore career opportunities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Section -->
+    <section class="py-16 px-6 bg-gray-100">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-blue-800 mb-12">FEATURED EPISODES</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+                From updating work samples to optimizing for mobile devices, Sathirta will provide you with the knowledge and skills you need.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105">
+                    <div class="h-48 bg-blue-700 flex items-center justify-center">
+                        <i class="fas fa-globe text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">Get A New Website Done in Record Time</h3>
+                        <p class="text-gray-600">Create a strong personal brand identity that exudes authority in the UK business industry.</p>
+                    </div>
+                </div>
+                
+                <!-- Feature Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105">
+                    <div class="h-48 bg-blue-600 flex items-center justify-center">
+                        <i class="fas fa-gift text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">Create Enticing Brand for A Luxury Gift Brand</h3>
+                        <p class="text-gray-600">Too many e-commerce brands sell 'seamder' sachets at a low price. Lennie is a luxury product.</p>
+                    </div>
+                </div>
+                
+                <!-- Feature Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105">
+                    <div class="h-48 bg-blue-800 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">Killer Content Strategy to Give The Brand A New Life Online</h3>
+                        <p class="text-gray-600">Business Intelligence (BII) is a highly "technical" industry. It is tough to attract the right.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 px-6 bg-blue-800 text-white">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-6">Subscribe Newsletter</h2>
+            <p class="text-center text-blue-100 mb-10">
+                Simplified in 2.0 aims to redefine the national trajectory by enhancing cutting-edge technology, promoting inclusive growth.
+            </p>
+            
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <input type="email" placeholder="Enter your email here" class="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800">
+                    <button class="bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors">
+                        Subscribe
+                    </button>
+                </div>
+                <p class="text-center text-gray-500 mt-4 text-sm">
+                    <i class="fas fa-shield-alt mr-2"></i>I promise not to spam you! You can belive me
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-laptop-code mr-2"></i> MY_WED
+                    </h3>
+                    <p class="text-gray-400">My Website - Software Engineering Wing Member</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Resources</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Newsletter</a></li>
+                        <li><a href="#" class="login-btn text-gray-400 hover:text-white transition-colors cursor-pointer">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Me</h4>
+                    <p class="text-gray-400 mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Premier University, Chittagong</p>
+                    <p class="text-gray-400 mb-2"><i class="fas fa-envelope mr-2"></i> info@pucc.edu</p>
+                    <p class="text-gray-400"><i class="fas fa-phone mr-2"></i> +880 1234 567890</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Me</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 MY_WED (Sathirta). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM elements
+        const body = document.querySelector('body');
+        const loginModal = document.querySelector('.modal');
+        const registerModal = document.querySelector('.register-modal');
+        const loginButtons = document.querySelectorAll('.login-btn');
+        const switchToRegisterButtons = document.querySelectorAll('.switch-to-register');
+        const switchToLoginButtons = document.querySelectorAll('.switch-to-login');
+        const modalCloseButtons = document.querySelectorAll('.modal-close');
+        const mobileMenuButton = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        // Functions to open/close modals
+        function openModal(modal) {
+            modal.classList.remove('opacity-0');
+            modal.classList.remove('pointer-events-none');
+            body.classList.add('modal-active');
+        }
+        
+        function closeModal(modal) {
+            modal.classList.add('opacity-0');
+            modal.classList.add('pointer-events-none');
+            body.classList.remove('modal-active');
+        }
+        
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        // Event listeners
+        loginButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(loginModal);
+            });
+        });
+        
+        switchToRegisterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeModal(loginModal);
+                openModal(registerModal);
+            });
+        });
+        
+        switchToLoginButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeModal(registerModal);
+                openModal(loginModal);
+            });
+        });
+        
+        modalCloseButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                closeModal(loginModal);
+                closeModal(registerModal);
+            });
+        });
+        
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode === 27) {
+                closeModal(loginModal);
+                closeModal(registerModal);
+            }
+        };
+        
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        
+        // Close modals when clicking outside
+        loginModal.querySelector('.modal-overlay').addEventListener('click', () => {
+            closeModal(loginModal);
+        });
+        
+        registerModal.querySelector('.modal-overlay').addEventListener('click', () => {
+            closeModal(registerModal);
+        });
+        
+        // Form submission handling
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Simple validation
+            if (email && password) {
+                // In a real application, you would send this data to a server
+                showToast('Login successful!');
+                closeModal(loginModal);
+                // Clear form
+                this.reset();
+            } else {
+                showToast('Please fill all fields', 'error');
+            }
+        });
+        
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            // Validation
+            if (!name || !email || !password || !confirmPassword) {
+                showToast('Please fill all fields', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showToast('Passwords do not match', 'error');
+                return;
+            }
+            
+            // In a real application, you would send this data to a server
+            showToast('Registration successful!');
+            closeModal(registerModal);
+            // Clear form
+            this.reset();
+        });
+        
+        // Toast notification function
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            
+            // Set background color based on type
+            if (type === 'error') {
+                toast.classList.remove('bg-green-500');
+                toast.classList.add('bg-red-500');
+            } else {
+                toast.classList.remove('bg-red-500');
+                toast.classList.add('bg-green-500');
+            }
+            
+            // Show toast
+            toast.classList.remove('hidden');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
